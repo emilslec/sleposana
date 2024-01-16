@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Roboto+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500&display=swap');
+
+body {
+    margin:0;
+    padding:0;
+    background-color:bisque;
+    font-family: 'Open Sans', sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color:rgb(95, 47, 47);
+    font-size: large;
+}
+
+form > input, form > div{
+    margin-bottom: 1rem;
+}
+
+
+.mid{
+    margin-left:10px;
+}
+.center{
+    text-align:center;
+}
+.container{
+    display: grid;
+    grid-template-columns: 2fr 7fr 1fr;
+}
+.topic_h1 {
+    font-weight: 400;
+    font-size: xx-large;
+}
+.place_info {
+    min-width: 400px;
+}
+.place_image {
+    display: block;
+}
+
+#questions {
+    margin-bottom: 1rem;
+}
+
+.place_description {
+    width:60%;
+    text-indent: 30px;
+}
+
+.map_image {
+    float: right;
+    width: 750px;
+    height: fit-content;
+}
+.side{
+    width:300px;
+    background-color: whitesmoke;
+    border-right: 2px black solid;
+}
+.side_list{
+    width: 160px;
+}
+.side_fi{
+    position: fixed;
+    padding-top:20px;
+    width: 300px;
+}
+li>a:hover{
+    color:orangered;
+}
+.place {
+    display: inline-flex;
+    min-height:450px;
+    margin-bottom: 3rem;
+}
+.opt_list {
+    list-style: none;
+    font-variant: small-caps;
+    text-transform: capitalize;
+}
+.good{
+    color:greenyellow;
+}
+.bad{
+    color:red;
+}
+.mark {
+    font-size: 2rem;
+}
+.get_t{
+    padding: 1.5rem;
+    background-color: turquoise;
+    border-radius: 10px;
+    border:1px solid green;
+}
+.get_t:hover {
+    background-color: yellow;
+    transition-duration: 1s;
+}
+.dropdown {
+    display:none;
+    position: absolute;
+    background-color: whitesmoke;
+    z-index: 1;
+    width: 250px;
+    height: 100px;
+    padding: 1.5rem 2rem;
+    box-shadow: 8px 8px 10px rgba(0,0,0,0.5);
+}
+.intro_q {
+    margin:2rem 0;
+    
+}
+.need_drop {
+    font-size: large;
+    font-weight: normal;
+    width: 200px;
+}
+.need_drop:hover .dropdown {
+    display: block;
+}
+#q1 {
+    min-width: 600px;
+    min-height: 40px;
+    overflow-x: auto;
+}
+#slepotajs{
+    margin:auto
+}
+.red {
+    color:red;
+}
+.black {
+    color:black;
+}
+
+@media (max-width: 1500px) {
+    .map_image {
+      width: 500px;
+    }
+}
+@media (max-width: 1200px) {
+    .side, .side_fi, #slepotajs{
+        width:200px;
+    }
+}
