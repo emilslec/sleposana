@@ -1,169 +1,223 @@
 <!DOCTYPE html>
 <html lang="lv">
-    <head>
+  <head>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Slēpošana</title>
-</head>
-<body >
-    <main id="nmain">
-        <div class="container">
-            
-            <div class="side">
-                <div class="side_fi">
-                    <div class="side_list">
-                        <h3 class="center">Satura rādītājs</h3>
-                        <ul >
-                            <li><a href="#Milzkalns">Milzkalns</a></li>
-                            <li><a href="#Riekstukalns">Riekstukalns</a></li>
-                            <li><a href="#Smecersils">Smecersils</a></li>
-                            <li><a href="#questions">Jautājumi</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="center">Kāpēc slēpot?</h3>
-                        <ol>
-                            <li>Slēpošana uzlabo balansu</li>
-                            <li>Stiprina muskuļus</li>
-                            <li>Uzlabo izturību</li>
-                            <li>Palīdz zaudēt lieko svaru</li>
-                            <li>Tas ir jautri</li>
-                        </ol>
-                    </div>
-                    <img src="./Images/slepotajs.jpeg" id="slepotajs" width="300px">
-                
-                </div>
+  </head>
+  <body>
+    <main id="main">
+      <div class="container">
+        <div class="side">
+          <div class="side_fi">
+            <div class="side_list">
+              <h3 class="center">Satura rādītājs</h3>
+              <ul>
+                <li><a href="#Milzkalns">Milzkalns</a></li>
+                <li><a href="#Riekstukalns">Riekstukalns</a></li>
+                <li><a href="#Smecersils">Smecersils</a></li>
+                <li><a href="#questions">Jautājumi</a></li>
+              </ul>
             </div>
-            <div class="mid">
-                <article>
-                    <h1 class="center topic_h1">Dažas slēpošanas iespējas Latvijā!</h1>
-                    <section v-for="(place, index) in places" :key="index" class="place" >
-                        
-                        <div :id="place.name" class="place_info">
-                            <h2 class="center">{{ place.name }}</h2>
-                            <blockquote class="place_description"> {{ place.description }}</blockquote>
-                            <ul class="opt_list">
-                                <li class="opt_has"><span v-if="place.options[0]==1" class="good mark">&#10003;</span><span v-if="place.options[0]==0" class="bad mark">&#119987;</span><strong>Kalnu slēpošana </strong></li>
-                                <li class="opt_not"><span v-if="place.options[1]==1" class="good mark">&#10003;</span><span v-if="place.options[1]==0" class="bad mark">&#119987;</span><strong>Distanču slēpošana </strong></li>
-                            </ul>
-                            <p>Mājaslapa -  <em><a :href="place.link" target="_blank">{{ place.name }}.lv</a></em></p>
-                            <button  @click="getTemp(index)" class="get_t">Redzēt temperatūru</button>
-                        </div>
-                        <img class="map_image" :src="place.img" alt="Karte ar Milzkalnu">
-                    </section>
-                </article>
-                <div id="questions">
-                    <div class="intro_q">
-                        <h2>Laiks pāris jautājumiem!</h2>
-                        <div class="need_drop">Kāpēc uz tiem atbildēt?
-                                <ol class="dropdown">
-                                    <li>Mums interesē Jūsu viedoklis.</li>
-                                    <li>Atbildes palīdz mājaslapas uzlabošanai.</li>
-                                    <li>Jautājumi veicinās izvēles apdomāšanu.</li>
-                                </ol>
-                        </div>
-                    </div>
-                    <form action="https://www.w3schools.com/action_page.php" method="POST">
-                        <label for="q1">Vai Jūs esat ieinteresēti slēpošanā?</label>
-                        <br>
-                        <input type="text" id="q1" placeholder="Domas" value="" name="intersese">
-                        <div>
-                            <span>Kuras no vietām Jūs plānojiet apmeklēt?</span>
-                            <br>
-                            <div v-for="(place,i) in places">
-                                <input type="checkbox" :id="`want_${place.name}`" :name="`opc_${i+1}`" :value="place.name">
-                                <label :for="`want_${place.name}`"> {{ place.name }}</label>
-                            </div>
-                        </div>
-                        <label  for="vertejums">Jūsu mājaslapas vērtējums! (1 - 10, Vesels skaitlis)</label>
-                        <br>
-                        <input type="number" id="vertejums" name="vertejums">
-                        <br>
-                        <input @click="submit()" type="submit"  value="Nosūtīt datus" id="submit_data">
-                    </form>
-                </div>
+            <div>
+              <h3 class="center">Kāpēc slēpot?</h3>
+              <ol>
+                <li>Slēpošana uzlabo balansu</li>
+                <li>Stiprina muskuļus</li>
+                <li>Uzlabo izturību</li>
+                <li>Palīdz zaudēt lieko svaru</li>
+                <li>Tas ir jautri</li>
+              </ol>
             </div>
+            <img src="./Images/slepotajs.jpeg" id="slepotajs" width="300px" />
+          </div>
         </div>
+        <div class="mid">
+          <article>
+            <h1 class="center topic_h1">Dažas slēpošanas iespējas Latvijā!</h1>
+            <section
+              v-for="(place, index) in places"
+              :key="index"
+              class="place"
+            >
+              <div :id="place.name" class="place_info">
+                <h2 class="center">{{ place.name }}</h2>
+                <blockquote class="place_description">
+                  {{ place.description }}
+                </blockquote>
+                <ul class="opt_list">
+                  <li class="opt_has">
+                    <span v-if="place.options[0]==1" class="good mark">
+                      &#10003;</span
+                    ><span v-if="place.options[0]==0" class="bad mark">
+                      &#119987;</span
+                    ><strong>Kalnu slēpošana </strong>
+                  </li>
+                  <li class="opt_not">
+                    <span v-if="place.options[1]==1" class="good mark">
+                      &#10003;</span
+                    ><span v-if="place.options[1]==0" class="bad mark">
+                      &#119987;</span
+                    ><strong>Distanču slēpošana </strong>
+                  </li>
+                </ul>
+                <p>
+                  Mājaslapa -
+                  <em
+                    ><a :href="place.link" target="_blank"
+                      >{{ place.name }}.lv</a
+                    ></em
+                  >
+                </p>
+                <button @click="getTemp(index)" class="get_t">
+                  Redzēt temperatūru
+                </button>
+              </div>
+              <img
+                class="map_image"
+                :src="place.img"
+                alt="Karte ar Milzkalnu"
+              />
+            </section>
+          </article>
+          <div id="questions">
+            <div class="intro_q">
+              <h2>Laiks pāris jautājumiem!</h2>
+              <div class="need_drop">
+                <h4 id="can_hover">Kāpēc uz tiem atbildēt?</h4>
+                <ol class="dropdown">
+                  <li>Mums interesē Jūsu viedoklis.</li>
+                  <li>Atbildes palīdz mājaslapas uzlabošanai.</li>
+                  <li>Jautājumi veicinās izvēles apdomāšanu.</li>
+                </ol>
+              </div>
+            </div>
+            <form
+              action="https://www.w3schools.com/action_page.php"
+              method="POST"
+            >
+              <label for="q1">Vai Jūs esat ieinteresēti slēpošanā?</label>
+              <br />
+              <input
+                type="text"
+                id="q1"
+                placeholder="Domas"
+                value=""
+                name="intersese"
+              />
+              <div>
+                <span>Kuras no vietām Jūs plānojiet apmeklēt?</span>
+                <br />
+                <div v-for="(place,i) in places">
+                  <input
+                    type="checkbox"
+                    :id="`want_${place.name}`"
+                    :name="`opc_${i+1}`"
+                    :value="place.name"
+                  />
+                  <label :for="`want_${place.name}`"> {{ place.name }}</label>
+                </div>
+              </div>
+              <label for="vertejums"
+                >Jūsu mājaslapas vērtējums! (1 - 10, Vesels skaitlis)</label
+              >
+              <br />
+              <input type="number" id="vertejums" name="vertejums" />
+              <br />
+              <input
+                @click="submit()"
+                type="submit"
+                value="Nosūtīt datus"
+                id="submit_data"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
     </main>
     <script>
-        Vue.createApp({
-            data() {
-                return {
-                    places: [{
-                        name : 'Milzkalns',
-                        description : 'Milzkalns ir viens no populārākajiem Latvijas slēpošanas kūrortiem, kur satiekas stilīgākie aktīvās atpūtas atbalstītāji. Tas pilnīgi noteikti ir vismājīgākais un draudzīgākais atpūtas komplekss, kur ziemas priekiem var nodoties visa ģimene.',
-                        link :'https://milzkalns.lv/',
-                        longitude : '23.2258',
-                        latitude : '56.9775',
-                        img : './Images/milzkalns_map.png',
-                        options : [1, 1]
-                    }, {
-                        name : 'Riekstukalns',
-                        description : 'Ir atvērtas 8 trases: Galvenā, Sporta, Hobija, Borderkrosa, Garākā, Iesācēju trase, Tuneļa un Riekstukalna trase.',
-                        link : 'https://www.riekstukalns.lv/lv',
-                        longitude : '24.41',
-                        latitude : '56.774576',
-                        img : './Images/riekstukalns_map.png',
-                        options : [1, 0]
-                    }, {
-                        name : 'Smecersils',
-                        description : 'Pieejama 5 kilometru un 3750 metru trases, kā arī mežā var pats izpētīt savus ceļus.',
-                        link : 'https://www.smeceressils.lv/',
-                        longitude : '26.191320',
-                        latitude : '56.841356',
-                        img : './Images/smeceressils_map.png',
-                        options  : [0, 1]
-                    }]
-                    
-                    
+      Vue.createApp({
+        data() {
+          return {
+            places: [
+              {
+                name: "Milzkalns",
+                description:
+                  "Milzkalns ir viens no populārākajiem Latvijas slēpošanas kūrortiem, kur satiekas stilīgākie aktīvās atpūtas atbalstītāji. Tas pilnīgi noteikti ir vismājīgākais un draudzīgākais atpūtas komplekss, kur ziemas priekiem var nodoties visa ģimene.",
+                link: "https://milzkalns.lv/",
+                longitude: "23.2258",
+                latitude: "56.9775",
+                img: "./Images/milzkalns_map.png",
+                options: [1, 1],
+              },
+              {
+                name: "Riekstukalns",
+                description:
+                  "Ir atvērtas 8 trases: Galvenā, Sporta, Hobija, Borderkrosa, Garākā, Iesācēju trase, Tuneļa un Riekstukalna trase.",
+                link: "https://www.riekstukalns.lv/lv",
+                longitude: "24.41",
+                latitude: "56.774576",
+                img: "./Images/riekstukalns_map.png",
+                options: [1, 0],
+              },
+              {
+                name: "Smecersils",
+                description:
+                  "Pieejama 5 kilometru un 3750 metru trases, kā arī mežā var pats izpētīt savus ceļus.",
+                link: "https://www.smeceressils.lv/",
+                longitude: "26.191320",
+                latitude: "56.841356",
+                img: "./Images/smeceressils_map.png",
+                options: [0, 1],
+              },
+            ],
+          };
+        },
+        methods: {
+          getTemp(i) {
+            fetch(
+              `https://api.open-meteo.com/v1/forecast?latitude=${this.places[i].latitude}&longitude=${this.places[i].longitude}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m`
+            )
+              .then((res) => res.json())
+              .then((res) => {
+                if (document.getElementById(`temp_${i}`)) {
+                  document.getElementById(`temp_${i}`).remove();
                 }
-            },
-            methods: {
-                getTemp(i) { 
-                    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${this.places[i].latitude}&longitude=${this.places[i].longitude}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m`)
-                    .then(res => res.json())
-                    .then(res =>{
-                        if (document.getElementById(`temp_${i}`)) {
-                            document.getElementById(`temp_${i}`).remove()
-                        }
-                        console.log(res.current.temperature_2m)
-                        const temp = document.createElement('h3')
-                        const place = document.createTextNode("Pašreizējā temperatūra: " + res.current.temperature_2m)
-                        temp.id = `temp_${i}`
-                        temp.appendChild(place);
+                console.log(res.current.temperature_2m);
+                const temp = document.createElement("h3");
+                const place = document.createTextNode(
+                  "Pašreizējā temperatūra: " + res.current.temperature_2m
+                );
+                temp.id = `temp_${i}`;
+                temp.appendChild(place);
 
-                        document.getElementById(this.places[i].name).appendChild(temp);
-                    }) 
-                },
-                submit() {
-                    const q1_v = $("#q1").val();
-                    if(q1_v == ""){
-                        event.preventDefault();
-                        $('label[for="q1"]').addClass('red').removeClass('black');
-                        alert("Nav atbildēts pirmais jautājums!");
-                      
-                    }
-                    else{
-                        $('label[for="q1"]').addClass("black").removeClass('red');
-                    }
-                    const vert_v = $("#vertejums").val();
-                    if(vert_v<=0 || vert_v > 10 || vert_v==''){
-                        event.preventDefault();
-                        $('label[for="vertejums"]').addClass('red').removeClass('black');
-                        alert("Nav ievadīts derīgs vērtējums!")
-                    }
-                    else{
-                        $('label[for="vertejums"]').addClass("black").removeClass('red');
-                    }
-                    
-                }
+                document.getElementById(this.places[i].name).appendChild(temp);
+              });
+          },
+          submit() {
+            const q1_v = $("#q1").val();
+            if (q1_v == "") {
+              event.preventDefault();
+              $('label[for="q1"]').addClass("red").removeClass("black");
+              alert("Nav atbildēts pirmais jautājums!");
+            } else {
+              $('label[for="q1"]').addClass("black").removeClass("red");
             }
-        }).mount('#nmain')
+
+            const vert_v = $("#vertejums").val();
+            if (vert_v <= 0 || vert_v > 10 || vert_v == "") {
+              event.preventDefault();
+              $('label[for="vertejums"]').addClass("red").removeClass("black");
+              alert("Nav ievadīts derīgs vērtējums!");
+            } else {
+              $('label[for="vertejums"]').addClass("black").removeClass("red");
+            }
+          },
+        },
+      }).mount("#main");
     </script>
-
-
-</body>
+  </body>
 </html>
