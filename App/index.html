@@ -47,7 +47,7 @@
                         <br>
                         <input type="text" id="q1" placeholder="Domas" value="" name="intersese">
                         <div>
-                            <label>Kuras no vietām Jūs plānojiet apmeklēt?</label>
+                            <span>Kuras no vietām Jūs plānojiet apmeklēt?</span>
                             <br>
                             <div v-for="(place,i) in places">
                                 <input type="checkbox" :id="`want_${place.name}`" :name="`opc_${i+1}`" :value="place.name">
