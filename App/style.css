@@ -41,6 +41,7 @@ form > input, form > div{
 
 #questions {
     margin-bottom: 1rem;
+    border-top:3px white dashed;
 }
 
 .place_description {
